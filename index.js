@@ -164,4 +164,42 @@ function products(arr, exclude, container) {
   return products(arr, exclude + 1, container);
 }
 
-console.log(products([1, 3, 9, 4], 0, []));
+//console.log(products([1, 3, 9, 4], 0, []));
+
+// 11.)
+//
+function searchArr(arr) {
+  for (let i = 0; i < arr.length; i++) {
+
+    for (let j = 0; j < arr[i].length; j++) {
+      if(arr[i][j] === 0) {
+        arr[i] = clearRow(arr[i]);
+        
+        // j = arr[i].length;
+      }
+      //console.log('column: ' + arr[i][j]);
+      console.log(arr[i][j])
+    }
+    
+    
+  }
+  return arr;
+}
+
+function clearRow(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = 0;
+  }
+  return arr;
+}
+
+let map = 
+  [
+    [1,0,1,1,0],
+    [0,1,1,1,0],
+    [1,1,1,1,1],
+    [1,0,1,1,1],
+    [1,1,1,1,1]
+  ];
+
+console.log(searchArr(map));
