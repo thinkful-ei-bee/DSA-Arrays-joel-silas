@@ -1,9 +1,9 @@
-const Array = require('./array.js');
+const array = require('./array.js');
 
 function main() {
   // do stuff ...
 
-  let arr = new Array();
+  let arr = new array();
 }
 
 main();
