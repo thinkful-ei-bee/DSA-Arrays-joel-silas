@@ -4,13 +4,16 @@ const memory = new mem();
 class Array {
   constructor() {
     this.length = 0;
-    this.capacity = 0;
+    this._capacity = 0;
     // this.memory = new memory();
     this.pointer = memory.allocate(this.length);
   }
 
   push(value) {
-    this._resize(this.length + 1);
+    if (this.length >= this._capacity) { 
+      this._resize((this.length + 1) * Array.SIZE_RATIO); 
+    }
+    //this._resize(this.length + 1);
     memory.set(this.pointer + this.length, value);
     this.length++;
   }
@@ -23,6 +26,8 @@ class Array {
     }
     memory.copy(this.pointer, oldPointer, this.length);
     memory.free(oldPointer);
+    // revisit capacity here
+    this._capacity = size;
   }
 
   get(index) {
@@ -67,3 +72,4 @@ class Array {
 Array.SIZE_RATIO = 3;
 
 module.exports = Array;
+
