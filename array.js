@@ -25,8 +25,45 @@ class Array {
     memory.free(oldPointer);
   }
 
+  get(index) {
+    if (index < 0 || index >= this.length) {
+      throw new Error('Index error');
+    }
+    return memory.get(this.pointer + index);
+  }
 
+  pop() {
+    if (this.length == 0) {
+      throw new Error('Index error');
+    }
+    const value = memory.get(this.pointer + this.length - 1);
+    this.length--;
+    return value;
+  }
 
+  insert(index, value) {
+    if (index < 0 || index >= this.length) {
+      throw new Error('Index error');
+    }
+
+    if (this.length >= this._capacity) {
+      this._resize((this.length + 1) * Array.SIZE_RATIO);
+    }
+
+    memory.copy(this.pointer + index + 1, this.pointer + index, this.length - index);
+    memory.set(this.pointer + index, value);
+    this.length++;
+  }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) {
+      throw new Error('Index error');
+    }
+    memory.copy(this.pointer + index, this.pointer + index + 1, this.length - index - 1);
+    this.length--;
+  }
 }
+
+Array.SIZE_RATIO = 3;
 
 module.exports = Array;
