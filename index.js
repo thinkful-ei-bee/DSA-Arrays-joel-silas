@@ -103,8 +103,10 @@ function maxSum(arr) {
 }
 //console.log(maxSum([4, 6, -3, 5, -2, 1]));
 
+// 8)
+// O(n)
 function mergeSortedArray(a, b) {
-  var tempArray = [];
+  const tempArray = [];
   while(a.length || b.length) {
     if(typeof a[0] === 'undefined') {
       tempArray.push(b[0]);
@@ -121,4 +123,45 @@ function mergeSortedArray(a, b) {
   }
   return tempArray;
 }
-console.log(mergeSortedArray([4,6,7,8], [1,2,3,5,9]));
+//console.log(mergeSortedArray([4,6,7,8], [1,2,3,5,9]));
+
+// 9)
+// O(n^2)
+function removeChars(str, chars) {
+  let newStr = '';
+  for (let i = 0; i < str.length; i++) {
+    if (chars.includes(str[i])) {
+      newStr += '';
+    } 
+    else {
+      newStr += str[i];
+    }
+  }
+
+  console.log(newStr);
+  return newStr;
+}
+
+//removeChars('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou');
+
+// 10)
+// O(n^2)
+function products(arr, exclude, container) {
+  let product = arr[0];
+
+  if (exclude >= arr.length) {
+    return container;
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    //prodArr.push(arr.splice(i, 1))
+    if (i !== exclude) {
+      product *= arr[i];
+    }
+  }
+
+  container.push(product);
+  return products(arr, exclude + 1, container);
+}
+
+console.log(products([1, 3, 9, 4], 0, []));
