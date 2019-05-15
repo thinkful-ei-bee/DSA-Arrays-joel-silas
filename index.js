@@ -40,12 +40,12 @@ function main() {
   // memory starts. So the address would be 3 to 15.
 
   // 4.)
-  console.log(arr.get(0))
+  console.log(arr.get(0));
   arr.pop();
   arr.pop();
   arr.pop();
-  arr.push("tauhida");
-  console.log(arr.get(0))
+  arr.push('tauhida');
+  console.log(arr.get(0));
   // - First item in array is "NaN", not a number. We specify our memory
   // in memory.js as an int. So this is a type error. So there is no 
   // dynamic typing.
@@ -55,4 +55,35 @@ function main() {
   // address, sets old pointer as free, and sets new capacity
 }
 
-main();
+// 5)
+// O(n)
+function parseUrl(url) {
+  let newUrl = '';
+  for (let i = 0; i < url.length; i++) {
+    if (url[i] === ' ') {
+      newUrl += '%20';
+    }
+    else {
+      newUrl += url[i];
+    }
+  }
+
+  console.log(newUrl);
+
+}
+
+// 6)
+// O(n)
+function filt(arr, num) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > num) {
+      newArr.push(arr[i]);
+    }
+  }
+  console.log(newArr);
+  return newArr;
+}
+
+//parseUrl('www.thinkful.com /tauh ida parv een');
+//filt([1,2,3,4,5,6,7,8,9,10], 9);
