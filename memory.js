@@ -1,6 +1,5 @@
 class Memory {
   constructor() {
-    console.log('this is your memory ..');
     this.memory = new Float64Array(1024);
     this.head = 0;
   }
